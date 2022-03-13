@@ -1,10 +1,10 @@
 <template>
     <div class="lift-etaj">
-        <VCabinca/>
-         <div v-for="n in 5" :key = "n" class="lift-column">
+         <div v-for="n in getEtag" :key="n" class="lift-column">
               <div class="etaj"></div>
               <span>{{n}}</span>
-         </div>
+         </div> 
+         <VCabinca/>
     </div>
 </template>
 
@@ -12,7 +12,12 @@
 import VCabinca from "./vCabinca.vue";
     export default {
     name: "VTable",
-    components: { VCabinca }
+    components: { VCabinca },
+    computed: {
+        getEtag(){
+            return this.$store.getters.getNbtn
+        }
+    },
 }
 </script>
 

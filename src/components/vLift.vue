@@ -1,7 +1,7 @@
 <template>
     <div class="Lift-block">
         <div  class="Lift-btn">
-            <VButton v-for="n in 5" :key="n" :name="n" />
+            <VButton @click="mooves(n)" v-for="n in getBtn" :key="n" :name="n" />
         </div>
         <VTable />
     </div>
@@ -10,9 +10,23 @@
 <script>
 import VButton from "./ui/vButton.vue";
 import VTable from "./ui/vTable.vue";
+import {mapMutations} from "vuex"
     export default {
     name: "vLift",
-    components: { VButton, VTable }
+    components: { VButton, VTable },
+    computed: {
+        getBtn() {
+            return this.$store.getters.getNbtn
+        }
+    },
+    methods:{
+        ...mapMutations(['moove']),
+        mooves(n){
+            this.moove(n)
+        },
+    }
+    
+    
 }
 </script>
 
@@ -21,6 +35,7 @@ import VTable from "./ui/vTable.vue";
   display:flex;
   width: 200px;
   justify-content: space-around;
+  position:relative;
   }  
   .Lift-btn{
   display:flex;

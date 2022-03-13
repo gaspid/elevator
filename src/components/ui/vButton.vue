@@ -1,5 +1,5 @@
 <template>
-    <button>{{name}}</button>
+    <button >{{name}}</button>
 </template>
 
 <script>
@@ -9,7 +9,7 @@
             name:{
                 type:Number,
             }
-        }
+        },
         
     }
 </script>
